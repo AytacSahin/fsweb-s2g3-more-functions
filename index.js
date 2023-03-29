@@ -16,8 +16,17 @@
   örnek output: ""
 */
 
-function dosyaAdiniBul(/* kodlar buraya */) {
-  // kodlar buraya
+function dosyaAdiniBul(dosyaAdi) {
+  console.log(dosyaAdi);
+  if (dosyaAdi.length == 0) {
+    return "";
+  } else if (dosyaAdi.length > 0 && dosyaAdi.indexOf("/") < 0) {
+    return dosyaAdi;
+  } else if (dosyaAdi.length > 0 && dosyaAdi.indexOf("/") > 0) {
+    const indexNo = dosyaAdi.lastIndexOf("/");
+    console.log(indexNo); 
+    return dosyaAdi.slice(indexNo+1);
+  }
 }
 
 /*
@@ -38,9 +47,16 @@ function dosyaAdiniBul(/* kodlar buraya */) {
   örnek output: 104
 */
 
-function ortalamaBul(/* kodlar buraya */) {
-  // kodlar buraya
-}
+
+function ortalamaBul(array) {
+  if (array.length != 0) {
+    const toplam = array.reduce((a, b) => a + b); 
+    return toplam / array.length;
+  } 
+  else if (array.length == 0) { 
+    return null;
+  }
+};
 
 /*
   GÖREV 3
@@ -62,8 +78,18 @@ function ortalamaBul(/* kodlar buraya */) {
   örnek output: [109, 216, 288, 143, 185, 194]
 */
 
-function ortalamadanBuyukleriBul(/* kodlar buraya */) {
-  // kodlar buraya
+// const winners = getFinalStages(allData).map((mac) =>
+// mac["Home Team Goals"] > mac["Away Team Goals"] ? mac["Home Team Name"] : mac["Away Team Name"]
+// );
+
+function ortalamadanBuyukleriBul(array) {
+const diziOrtalamasi = ortalamaBul(array);
+if (array.length == 0) { 
+  return null
+  } else {
+  const yeniDizi = array.filter(sayi => sayi >= diziOrtalamasi);
+  return yeniDizi
+  }
 }
 
 /* !!!! Burdan aşağısını değiştirmeyin !!!! */
